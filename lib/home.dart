@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:ui';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,7 @@ class Home extends HookWidget {
   Widget build(BuildContext context) {
     final counter = useState(0);
     final title = useTextEditingController();
+
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -26,7 +28,9 @@ class Home extends HookWidget {
                   SizedBox(
                     child: TextField(
                       style: const TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 20),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
                       textAlign: TextAlign.center,
                       controller: title,
                       maxLines: null,
@@ -38,6 +42,7 @@ class Home extends HookWidget {
                       counter.value.toString(),
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
+                        fontFeatures: [FontFeature.tabularFigures()],
                         fontSize: 200,
                       ),
                     ),
