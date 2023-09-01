@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -14,30 +13,40 @@ class Home extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final counter = useState(0);
+    final title = useTextEditingController();
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(40.0),
+      body: SafeArea(
         child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                counter.value.toString(),
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 200,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SizedBox(
+                  width: 280,
+                  child: TextField(
+                    controller: title,
+                    maxLines: null,
+                    onTapOutside: (_) => FocusScope.of(context).unfocus(),
+                  ),
                 ),
-              ),
-              FilledButton(
-                onPressed: () async {
-                  await Tmp.clear();
-                  if (!context.mounted) return;
-                  ScaffoldMessenger.of(context)
-                      .showSnackBar(snackBar('✅ Cache cleared'));
-                },
-                child: const Text('Clear Cache'),
-              ),
-            ],
+                Text(
+                  counter.value.toString(),
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 200,
+                  ),
+                ),
+                FilledButton(
+                  onPressed: () async {
+                    await Tmp.clear();
+                    if (!context.mounted) return;
+                    ScaffoldMessenger.of(context)
+                        .showSnackBar(snackBar('✅ Cache cleared'));
+                  },
+                  child: const Text('Clear Cache'),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -53,8 +62,11 @@ class Home extends HookWidget {
             return;
           }
           final images = await downloadImeges(url, counter);
-          final pdf = await createPDF(images);
+          final pdf = await createPDF(images, title);
           await OpenFile.open(pdf.path);
+          await Tmp.clear();
+          counter.value = 0;
+          title.clear();
         },
       ),
     );
@@ -66,7 +78,6 @@ Future<List<p.MemoryImage>> downloadImeges(
   List<p.MemoryImage> images = [];
   final baseUrl = url.substring(0, url.lastIndexOf('/'));
   final extension = url.substring(url.lastIndexOf('.'));
-  log('$baseUrl/1$extension');
 
   for (var i = 1; i < 1000; i++) {
     final path = '${Tmp.path}/$i$extension';
@@ -81,15 +92,16 @@ Future<List<p.MemoryImage>> downloadImeges(
   return images;
 }
 
-Future<File> createPDF(List<p.MemoryImage> images) async {
+Future<File> createPDF(
+    List<p.MemoryImage> images, TextEditingController title) async {
   final document = p.Document();
   for (var image in images) {
     document.addPage(p.Page(
         pageFormat: PdfPageFormat.undefined,
         build: (_) => p.Center(child: p.Image(image))));
   }
-
-  final pdf = File('${Tmp.path}/output.pdf');
+  if (title.text.isEmpty) title.text = 'document';
+  final pdf = File('${Tmp.path}/${title.text}.pdf');
   await pdf.writeAsBytes(await document.save());
   return pdf;
 }
