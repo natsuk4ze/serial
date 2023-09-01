@@ -16,36 +16,41 @@ class Home extends HookWidget {
     final title = useTextEditingController();
     return Scaffold(
       body: SafeArea(
-        child: Center(
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                SizedBox(
-                  width: 280,
-                  child: TextField(
-                    controller: title,
-                    maxLines: null,
-                    onTapOutside: (_) => FocusScope.of(context).unfocus(),
+        child: Padding(
+          padding: const EdgeInsets.all(28.0),
+          child: Center(
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SizedBox(
+                    child: TextField(
+                      textAlign: TextAlign.center,
+                      controller: title,
+                      maxLines: null,
+                      onTapOutside: (_) => FocusScope.of(context).unfocus(),
+                    ),
                   ),
-                ),
-                Text(
-                  counter.value.toString(),
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 200,
+                  FittedBox(
+                    child: Text(
+                      counter.value.toString(),
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 200,
+                      ),
+                    ),
                   ),
-                ),
-                FilledButton(
-                  onPressed: () async {
-                    await Tmp.clear();
-                    if (!context.mounted) return;
-                    ScaffoldMessenger.of(context)
-                        .showSnackBar(snackBar('✅ Cache cleared'));
-                  },
-                  child: const Text('Clear Cache'),
-                ),
-              ],
+                  FilledButton(
+                    onPressed: () async {
+                      await Tmp.clear();
+                      if (!context.mounted) return;
+                      ScaffoldMessenger.of(context)
+                          .showSnackBar(snackBar('✅ Cache cleared'));
+                    },
+                    child: const Text('Clear Cache'),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
