@@ -1,0 +1,9 @@
+include: analysis_options_flutter_lints.yaml
+analyzer:
+  plugins:
+    - custom_lint
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+custom_lint:
+  rules:
