@@ -25,6 +25,8 @@ class Home extends HookWidget {
                 children: [
                   SizedBox(
                     child: TextField(
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 20),
                       textAlign: TextAlign.center,
                       controller: title,
                       maxLines: null,
@@ -47,7 +49,7 @@ class Home extends HookWidget {
                       ScaffoldMessenger.of(context)
                           .showSnackBar(snackBar('✅ Cache cleared'));
                     },
-                    child: const Text('Clear Cache'),
+                    child: const Icon(Icons.clear),
                   ),
                 ],
               ),
@@ -63,7 +65,7 @@ class Home extends HookWidget {
           if (!url.contains('http')) {
             if (!context.mounted) return;
             ScaffoldMessenger.of(context)
-                .showSnackBar(snackBar('❌ !contains http'));
+                .showSnackBar(snackBar('❌ Not contains http'));
             return;
           }
           final images = await downloadImeges(url, counter);
@@ -111,7 +113,12 @@ Future<File> createPDF(
   return pdf;
 }
 
-SnackBar snackBar(String text) => SnackBar(content: Text('ERROR: $text'));
+SnackBar snackBar(String text) => SnackBar(
+        content: Text(
+      text,
+      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+      textAlign: TextAlign.center,
+    ));
 
 class Tmp {
   static Directory get get => Directory('${Directory.systemTemp.path}/serial');
