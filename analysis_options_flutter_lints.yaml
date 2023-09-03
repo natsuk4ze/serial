@@ -1,5 +1,0 @@
-analyzer:
- errors:
-    invalid_annotation_target: ignore
-       
-include: package:flutter_lints/flutter.yaml
