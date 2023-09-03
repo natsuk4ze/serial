@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:serial/home.dart';
 
-final GlobalKey<NavigatorState> naviKey = GlobalKey<NavigatorState>();
+final naviKey = GlobalKey<NavigatorState>();
 
 class App extends StatelessWidget {
   const App({super.key});
