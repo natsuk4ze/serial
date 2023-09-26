@@ -25,13 +25,6 @@ jobs:
       - name: Check out
         uses: actions/checkout@v4
 
-      - name: Setup JDK
-        uses: actions/setup-java@v3
-        with:
-          java-version: 11
-          distribution: temurin
-          cache: gradle
-
       - name: Setup Flutter SDK
         timeout-minutes: 10
         uses: subosito/flutter-action@v2
