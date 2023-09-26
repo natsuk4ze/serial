@@ -6,7 +6,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 import 'package:open_file/open_file.dart';
 
-import 'package:serial/app.dart';
+import 'package:serial/main.dart';
 import 'package:serial/util.dart';
 
 class Home extends HookWidget {
@@ -15,7 +15,7 @@ class Home extends HookWidget {
   Widget build(BuildContext context) {
     final counter = useState(0);
     final title = useTextEditingController();
-    final toPDF = useState(false);
+    final toPDF = useState(true);
 
     return Scaffold(
       body: SafeArea(
