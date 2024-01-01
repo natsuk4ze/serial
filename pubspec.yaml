@@ -15,7 +15,7 @@ dependencies:
   hooks_riverpod: ^2.4.9
   open_file: ^3.3.2
   path_provider: ^2.1.1
-  pdf: ^3.10.4
+  pdf: ^3.10.7
   riverpod_annotation: ^2.3.0
 
 dev_dependencies:
