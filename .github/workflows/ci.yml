@@ -40,3 +40,7 @@ jobs:
       - name: Build iOS
         timeout-minutes: 10
         run: flutter build ios --no-codesign
+      
+      - name: Build Android
+        timeout-minutes: 10
+        run: flutter build apk

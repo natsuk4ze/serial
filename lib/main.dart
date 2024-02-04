@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:serial/home.dart';
 
-void main() => runApp(const ProviderScope(child: App()));
-
-final naviKey = GlobalKey<NavigatorState>();
+void main() => runApp(const App());
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -12,7 +9,6 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      navigatorKey: naviKey,
       theme: ThemeData(
         colorSchemeSeed: Colors.green,
         brightness: Brightness.dark,

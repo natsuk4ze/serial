@@ -4,7 +4,6 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 import 'package:open_file/open_file.dart';
 
-import 'package:serial/main.dart';
 import 'package:serial/util.dart';
 
 class Home extends HookWidget {
@@ -28,7 +27,8 @@ class Home extends HookWidget {
                   child: ElevatedButton(
                     onPressed: () async {
                       await clearTmp();
-                      showSnackBar('🧹 Cache cleared');
+                      if (!context.mounted) return;
+                      showSnackBar('🧹 Cache cleared', context);
                     },
                     child: const Icon(Icons.clear),
                   ),
@@ -72,7 +72,7 @@ class Home extends HookWidget {
           final url = data?.text ?? '';
 
           if (!url.contains('http')) {
-            showSnackBar('❌ Not contains http');
+            if (context.mounted) showSnackBar('❌ Not contains http', context);
             return;
           }
           final images = await downloadImeges(url, (i) => counter.value = i);
@@ -83,7 +83,7 @@ class Home extends HookWidget {
           } else {
             await putImages(images, t);
           }
-          showSnackBar('✅ Done');
+          if (context.mounted) showSnackBar('✅ Done', context);
           await clearTmp();
           counter.value = 0;
           title.clear();
@@ -93,9 +93,8 @@ class Home extends HookWidget {
   }
 }
 
-void showSnackBar(String text) {
-  final context = naviKey.currentContext;
-  if (context == null || !context.mounted) return;
+void showSnackBar(String text, BuildContext context) {
+  if (!context.mounted) return;
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(
     text,
