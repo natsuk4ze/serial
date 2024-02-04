@@ -21,7 +21,8 @@ If PDF is ON, the PDF is displayed, if OFF, the image is saved in the applicatio
 
 **URL format example: https://~n.jpg**
 
-`n` is an integer
-There is no restriction on the extension, but everything is saved as jpg.
+- Parameters after the extension will be ignored
+- `n` is an integer
+- There is no restriction on the extension, but everything is saved as jpg
 
 **Warinig:** iOS is stable, but Android is still adjusting.
