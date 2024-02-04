@@ -30,7 +30,7 @@ class Home extends HookWidget {
                       if (!context.mounted) return;
                       showSnackBar('🧹 Cache cleared', context);
                     },
-                    child: const Icon(Icons.clear),
+                    child: const Text('Clear cache'),
                   ),
                 ),
                 const Gap(80),
@@ -44,6 +44,7 @@ class Home extends HookWidget {
                     controller: title,
                     maxLines: null,
                     onTapOutside: (_) => FocusScope.of(context).unfocus(),
+                    decoration: const InputDecoration(hintText: 'Input title'),
                   ),
                 ),
                 FittedBox(
