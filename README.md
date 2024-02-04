@@ -1,5 +1,7 @@
 # Serial - Useful tools by Midori Design Studio
 
+![demo](assets/demo.mp4)
+
 Save a batch of sequentially numbered image URLs. (You can also create a PDF file.)
 
 Image URLs are often stored with sequential numbers. For example,
