@@ -1,8 +1,6 @@
 # Serial - Useful tools by Midori Design Studio
 
-Download images stored in the database by sequential number and converted to pdf.
-
-*This is a personal project and there is no active maintenance.
+Save a batch of sequentially numbered image URLs. (You can also create a PDF file.)
 
 ## How to install
 
