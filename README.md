@@ -1,6 +1,6 @@
 # Serial
 
-![demo](https://github.com/natsuk4ze/serial/raw/main/assets/demo.png)
+<img src="https://github.com/natsuk4ze/serial/raw/main/assets/demo.png" height="600">
 
 Save a batch of sequentially numbered image URLs. (You can also create a PDF file.)
 
