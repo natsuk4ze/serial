@@ -1,9 +1,6 @@
-# Serial - Useful tools by Midori Design Studio
+# Serial
 
-<video controls height="600">
-  <source src="https://github.com/natsuk4ze/serial/raw/main/assets/demo.mp4" type="video/mp4">
-</video>
-
+![demo](https://github.com/natsuk4ze/serial/raw/main/assets/demo.png)
 
 Save a batch of sequentially numbered image URLs. (You can also create a PDF file.)
 
