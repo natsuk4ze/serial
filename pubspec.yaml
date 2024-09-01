@@ -14,7 +14,7 @@ dependencies:
   gap: ^3.0.1
   open_file: ^3.5.3
   path_provider: ^2.1.4
-  pdf: ^3.11.0
+  pdf: ^3.11.1
 
 dev_dependencies:
   flutter_test:
