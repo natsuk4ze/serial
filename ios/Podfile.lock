@@ -1,6 +1,6 @@
 PODS:
   - Flutter (1.0.0)
-  - open_file_ios (0.0.1):
+  - open_file_ios (1.0.3):
     - Flutter
   - path_provider_foundation (0.0.1):
     - Flutter
@@ -20,10 +20,10 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/path_provider_foundation/darwin"
 
 SPEC CHECKSUMS:
-  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
-  open_file_ios: 461db5853723763573e140de3193656f91990d9e
-  path_provider_foundation: 2b6b4c569c0fb62ec74538f866245ac84301af46
+  Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
+  open_file_ios: c1143c28b4c65f721cdd58d9fba2f7a1c55206cd
+  path_provider_foundation: 080d55be775b7414fd5a5ef3ac137b97b097e564
 
-PODFILE CHECKSUM: c4c93c5f6502fe2754f48404d3594bf779584011
+PODFILE CHECKSUM: 0dbd5a87e0ace00c9610d2037ac22083a01f861d
 
 COCOAPODS: 1.16.2
